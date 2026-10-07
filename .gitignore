@@ -1,0 +1,11 @@
+# Local working copies of the patched forks; the proof uses the published forks instead.
+/ebiten-patched/
+/purego-patched/
+/tools/
+/out-tests*.txt
+
+# Build output and profiles (run.sh recreates them).
+/app/bin/
+/app/out/*.pprof
+/app/out/*.png
+.DS_Store
