@@ -1,5 +1,12 @@
 # Ebitengine heap allocation proof (macOS)
 
+[![proof](https://github.com/gabstv/ebiten-heap-proof/actions/workflows/proof.yml/badge.svg)](https://github.com/gabstv/ebiten-heap-proof/actions/workflows/proof.yml)
+
+Every push runs the proof on GitHub Actions, on an Apple Silicon Mac (`macos-latest`, which also runs
+the Intel builds with Rosetta 2) and on an Intel Mac (`macos-15-intel`). Both use Metal. Open the
+[latest run](https://github.com/gabstv/ebiten-heap-proof/actions/workflows/proof.yml) to see the
+results table and download the full report.
+
 This repo shows that Ebitengine on macOS can run with **zero heap allocations per frame**,
 instead of about 480 per frame today, with a few changes to Ebitengine and purego.
 
