@@ -26,6 +26,15 @@ you need Rosetta 2 (`softwareupdate --install-rosetta`).
 
 A window opens and closes a few times. The output is also saved to `app/out/report.txt`.
 
+Then check the report:
+
+```sh
+./check.sh
+```
+
+It fails if a build did not use Metal, if two builds drew a different image for the same frame,
+or if a patched build allocated per frame. It also prints the results as a table.
+
 The app draws 500 sprites per frame. It skips the first 300 frames (warm-up), then counts
 heap allocations with `runtime.ReadMemStats` over the next 3000 frames (1200 with vsync on).
 It also prints a SHA-256 of one rendered frame, so you can check that both builds draw the same image.

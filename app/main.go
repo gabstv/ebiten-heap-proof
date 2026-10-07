@@ -39,6 +39,9 @@ func (g *game) Update() error {
 	g.frame++
 	switch g.frame {
 	case *warmup:
+		var d ebiten.DebugInfo
+		ebiten.ReadDebugInfo(&d)
+		fmt.Printf("%-9s graphics=%s\n", *label, d.GraphicsLibrary)
 		if *memprofile != "" {
 			runtime.MemProfileRate = 1 // record every allocation from here on
 		}

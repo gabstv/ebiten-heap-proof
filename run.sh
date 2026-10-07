@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # Builds the same app against official and patched ebiten/purego, then compares heap allocations.
-set -e
+# The output is also saved to app/out/report.txt.
+set -eo pipefail
 cd "$(dirname "$0")/app"
 mkdir -p bin out
+exec > >(tee out/report.txt) 2>&1
 go build -o bin/official .
 go build -modfile=patched.mod -o bin/patched .
 # Intel builds need an Intel Mac, or Rosetta 2 on Apple Silicon.

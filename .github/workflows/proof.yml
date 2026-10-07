@@ -1,0 +1,50 @@
+name: proof
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  proof:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Apple Silicon
+            runner: macos-latest
+          - name: Intel
+            runner: macos-15-intel
+    name: ${{ matrix.name }} (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: '1.27.x'
+          cache-dependency-path: app/*.sum
+
+      - name: Machine
+        run: |
+          sw_vers
+          uname -m
+          system_profiler SPHardwareDataType SPDisplaysDataType || true
+
+      - name: Run the proof
+        run: ./run.sh
+
+      - name: Check the results
+        if: always()
+        run: |
+          echo "## ${{ matrix.name }} (${{ matrix.runner }})" >> "$GITHUB_STEP_SUMMARY"
+          ./check.sh app/out/report.txt | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: report-${{ matrix.runner }}
+          path: app/out/report.txt
