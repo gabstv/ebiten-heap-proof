@@ -14,4 +14,4 @@ require (
 
 replace github.com/ebitengine/purego => github.com/gabstv/purego v0.12.0-alpha.1.0.20261008210505-bf824b7fa269
 
-replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261008222424-cf6c942dbba1
+replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261008225932-d448a46a3666
