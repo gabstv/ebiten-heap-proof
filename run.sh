@@ -43,6 +43,11 @@ elif [ "$(uname -s)" = Darwin ]; then
 fi
 
 echo
+echo "== steady state: a patched run of 12000 frames must allocate about as much as one of 3000"
+./bin/patched$exe -label steady-3000 -frames 3000
+./bin/patched$exe -label steady-12000 -frames 12000
+
+echo
 echo "== heap profiles (1000 frames, every allocation recorded)"
 ./bin/official$exe -label official -frames 1000 -memprofile out/official.pprof >/dev/null
 ./bin/patched$exe -label patched -frames 1000 -memprofile out/patched.pprof >/dev/null

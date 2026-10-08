@@ -22,6 +22,7 @@ var (
 	warmup     = flag.Int("warmup", 300, "frames to skip before measuring")
 	frames     = flag.Int("frames", 3000, "frames to measure")
 	sprites    = flag.Int("sprites", 500, "DrawImage calls per frame")
+	single     = flag.Bool("singlethread", false, "run with RunGameOptions.SingleThread")
 	vsync      = flag.Bool("vsync", false, "enable vsync (presents every frame, like a real game)")
 	label      = flag.String("label", "app", "name printed in the report")
 	pngOut     = flag.String("png", "", "save the hashed frame as a PNG to this file")
@@ -66,8 +67,9 @@ func (g *game) Draw(screen *ebiten.Image) {
 		g.op.GeoM.Translate(float64(w)/2+math.Cos(a)*float64(w)/3, float64(h)/2+math.Sin(a*1.3)*float64(h)/3)
 		screen.DrawImage(g.sprite, &g.op)
 	}
-	// Hash one frame before measuring, to show both builds render the same pixels.
-	if g.frame == *warmup-1 {
+	// Hash one frame in the middle of the warm-up, to show both builds render the same pixels.
+	// Reading pixels back finishes asynchronously, so it must happen well before measuring starts.
+	if g.frame == *warmup/2 {
 		pixels := make([]byte, 4*w*h)
 		screen.ReadPixels(pixels)
 		fmt.Printf("%-9s frame %d %dx%d sha256=%x\n", *label, g.frame, w, h, sha256.Sum256(pixels))
@@ -117,7 +119,7 @@ func main() {
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetVsyncEnabled(*vsync)
 	ebiten.SetTPS(ebiten.SyncWithFPS) // one Update per Draw, so "per frame" is exact
-	if err := ebiten.RunGame(&game{sprite: sprite}); err != nil {
+	if err := ebiten.RunGameWithOptions(&game{sprite: sprite}, &ebiten.RunGameOptions{SingleThread: *single}); err != nil {
 		panic(err)
 	}
 }

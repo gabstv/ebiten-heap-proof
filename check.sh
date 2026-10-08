@@ -26,18 +26,30 @@ awk -v expected="$expected" '
 		if ($i ~ /^frames=/) { split($i, f, "="); frames = f[2] }
 	}
 	if (!($1 in graphics)) { printf "FAIL: %s did not report its graphics library\n", $1; bad = 1 }
-	if ($1 ~ /^pat/) npatched++; else nofficial++
-	patched = ($1 ~ /^pat/)
+	if ($1 ~ /^(pat|steady)/) npatched++; else nofficial++
+	if ($1 ~ /^steady-/) { steady[frames] = allocs }
+	patched = ($1 ~ /^(pat|steady)/)
 	if (patched && perframe + 0 >= 1) { printf "FAIL: %s allocated %s times per frame\n", $1, perframe; bad = 1 }
 	if (!patched && perframe + 0 < 1) { printf "FAIL: %s allocated %s times per frame; the official build should allocate, so the measurement looks wrong\n", $1, perframe; bad = 1 }
 	rows = rows sprintf("| %s | %s | %s | %s | %s |\n", $1, frames, allocs, perframe, gcs)
 }
 END {
+	# The extra frames of the longer steady-state run must make fewer than 0.05 allocations per frame:
+	# anything that allocates every 20 frames or more often fails. A few allocations remain that are not
+	# tied to frames: Go runtime caches refilled when goroutines move between OS threads, sync.Pool
+	# refills, and buffers growing to a new high-water mark.
+	if (!(3000 in steady) || !(12000 in steady)) { print "FAIL: the steady-state runs are missing"; bad = 1 }
+	else {
+		extra = (steady[12000] - steady[3000]) / 9000
+		steadyline = sprintf("Steady state: the 9000 extra frames of the longer run made %d more allocations (%.4f per frame).", steady[12000] - steady[3000], extra)
+		if (extra >= 0.05) { printf "FAIL: %s\n", steadyline; bad = 1 }
+	}
 	if (npatched == 0 || nofficial == 0) { print "FAIL: the report has no results for official and patched builds"; bad = 1 }
 	print "| build | frames | allocations in the whole run | per frame | GCs |"
 	print "|---|---:|---:|---:|---:|"
 	printf "%s", rows
 	if (bad) exit 1
 	print ""
+	print steadyline
 	print "All checks passed: every build used " expected ", rendered the same frames, and the patched builds did not allocate per frame."
 }' "$report"
