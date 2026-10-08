@@ -12,6 +12,6 @@ require (
 	golang.org/x/sys v0.48.0 // indirect
 )
 
-replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261008212239-b5b73fe33abe
-
 replace github.com/ebitengine/purego => github.com/gabstv/purego v0.12.0-alpha.1.0.20261008210505-bf824b7fa269
+
+replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261008220548-10f13b7e5b0a

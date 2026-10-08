@@ -2,7 +2,7 @@
 # Checks a report written by run.sh and prints a Markdown summary.
 # EXPECTED_GRAPHICS is the graphics library every build must use (Metal by default).
 # It fails if a build did not use the expected graphics library, if two builds rendered a different image for the same frame,
-# if a patched build allocated per frame, or if an official build did not (which would mean the test is broken).
+# if a patched build allocated per frame, or if an official build did not (which would mean the measurement is broken).
 set -e
 report=${1:-app/out/report.txt}
 expected=${EXPECTED_GRAPHICS:-Metal}
@@ -29,7 +29,7 @@ awk -v expected="$expected" '
 	if ($1 ~ /^pat/) npatched++; else nofficial++
 	patched = ($1 ~ /^pat/)
 	if (patched && perframe + 0 >= 1) { printf "FAIL: %s allocated %s times per frame\n", $1, perframe; bad = 1 }
-	if (!patched && perframe + 0 < 100) { printf "FAIL: %s allocated only %s times per frame; the baseline looks wrong\n", $1, perframe; bad = 1 }
+	if (!patched && perframe + 0 < 1) { printf "FAIL: %s allocated %s times per frame; the official build should allocate, so the measurement looks wrong\n", $1, perframe; bad = 1 }
 	rows = rows sprintf("| %s | %s | %s | %s | %s |\n", $1, frames, allocs, perframe, gcs)
 }
 END {

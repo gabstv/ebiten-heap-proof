@@ -70,4 +70,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: report-${{ matrix.runner }}
-          path: app/out/report.txt
+          path: |
+            app/out/report.txt
+            app/out/*.pprof
