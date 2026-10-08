@@ -14,7 +14,7 @@ It builds the same small app twice:
 
 | build      | module file       | Ebitengine                            | purego                               |
 |------------|-------------------|---------------------------------------|--------------------------------------|
-| `official` | `app/go.mod`      | upstream `main` at `0fe3d37d7`        | v0.11.1                              |
+| `official` | `app/go.mod`      | upstream `main` at `9e6aa156c`        | v0.11.1                              |
 | `patched`  | `app/patched.mod` | same commit + changes ([branch][eb])  | `main` + changes ([branch][pg])      |
 
 The app code is the same for both. Only the dependencies differ.
@@ -88,10 +88,11 @@ Ebitengine's Metal and input code.
 The changes:
 
 **purego**
-- Fixed-arity `SyscallN0`–`SyscallN7`. The variadic `SyscallN` allocates its argument slice on
-  every call from another module. This is the same idea as
-  [ebitengine/purego#445](https://github.com/ebitengine/purego/pull/445).
-- `SyscallNMixed` and `SyscallNMixedStret`, to pass struct and float arguments and return structs
+- Fixed-arity `Syscall0`–`Syscall15`. The variadic `SyscallN` allocates its argument slice on
+  every call from another module. This is
+  [ebitengine/purego#445](https://github.com/ebitengine/purego/pull/445) with the changes asked for
+  in its review.
+- `SyscallMixed` and `SyscallMixedStret`, to pass struct and float arguments and return structs
   without reflection.
 - `CallbackAdapter`: when Objective-C calls a Go function (methods, blocks), purego can call it
   directly instead of through reflection. `objc.NewIMP` and `objc.NewBlock` use it for common signatures.
