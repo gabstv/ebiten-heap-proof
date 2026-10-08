@@ -1,15 +1,17 @@
 #!/bin/sh
 # Checks a report written by run.sh and prints a Markdown summary.
-# It fails if a build did not use Metal, if two builds rendered a different image for the same frame,
+# EXPECTED_GRAPHICS is the graphics library every build must use (Metal by default).
+# It fails if a build did not use the expected graphics library, if two builds rendered a different image for the same frame,
 # if a patched build allocated per frame, or if an official build did not (which would mean the test is broken).
 set -e
 report=${1:-app/out/report.txt}
+expected=${EXPECTED_GRAPHICS:-Metal}
 
-awk '
+awk -v expected="$expected" '
 / graphics=/ {
 	split($2, g, "=")
 	graphics[$1] = 1
-	if (g[2] != "Metal") { printf "FAIL: %s used %s, not Metal\n", $1, g[2]; bad = 1 }
+	if (g[2] != expected) { printf "FAIL: %s used %s, not %s\n", $1, g[2], expected; bad = 1 }
 }
 / sha256=/ {
 	frame = $3; sha = $NF
@@ -37,5 +39,5 @@ END {
 	printf "%s", rows
 	if (bad) exit 1
 	print ""
-	print "All checks passed: every build used Metal, rendered the same frames, and the patched builds did not allocate per frame."
+	print "All checks passed: every build used " expected ", rendered the same frames, and the patched builds did not allocate per frame."
 }' "$report"

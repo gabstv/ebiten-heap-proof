@@ -1,67 +1,67 @@
 == allocations per frame (3 runs each, 3000 measured frames, 500 sprites)
 official  frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 official  graphics=Metal
-official  frames=3000  allocs=1422961  allocs/frame=  474.32  bytes/frame=  12236.2  GCs=14  GC pause total=0.77ms
+official  frames=3000  allocs=1421016  allocs/frame=  473.67  bytes/frame=  12213.5  GCs=14  GC pause total=0.82ms
 patched   frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 patched   graphics=Metal
-patched   frames=3000  allocs=107  allocs/frame=    0.04  bytes/frame=      4.6  GCs=0  GC pause total=0.00ms
+patched   frames=3000  allocs=81  allocs/frame=    0.03  bytes/frame=      3.9  GCs=0  GC pause total=0.00ms
 official  frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 official  graphics=Metal
-official  frames=3000  allocs=1424151  allocs/frame=  474.72  bytes/frame=  12239.6  GCs=14  GC pause total=1.02ms
+official  frames=3000  allocs=1420788  allocs/frame=  473.60  bytes/frame=  12207.0  GCs=14  GC pause total=0.79ms
 patched   frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 patched   graphics=Metal
-patched   frames=3000  allocs=140  allocs/frame=    0.05  bytes/frame=      6.4  GCs=0  GC pause total=0.00ms
+patched   frames=3000  allocs=93  allocs/frame=    0.03  bytes/frame=      4.0  GCs=0  GC pause total=0.00ms
 official  frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 official  graphics=Metal
-official  frames=3000  allocs=1417011  allocs/frame=  472.34  bytes/frame=  12178.5  GCs=14  GC pause total=0.84ms
+official  frames=3000  allocs=1405483  allocs/frame=  468.49  bytes/frame=  12081.4  GCs=14  GC pause total=0.96ms
 patched   frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 patched   graphics=Metal
-patched   frames=3000  allocs=137  allocs/frame=    0.05  bytes/frame=      5.7  GCs=0  GC pause total=0.00ms
+patched   frames=3000  allocs=140  allocs/frame=    0.05  bytes/frame=    251.2  GCs=0  GC pause total=0.00ms
 
 == vsync on (presents every frame, like a real game; 1200 frames at the display rate)
 off-vsync frame 119 640x480 sha256=164ef6a8436af995fa76a5fa2bd42465141f6c479775b5b49f6666069c0e65e8
 off-vsync graphics=Metal
-off-vsync frames=1200  allocs=823010  allocs/frame=  685.84  bytes/frame=  17851.7  GCs=9  GC pause total=3.16ms
+off-vsync frames=1200  allocs=832219  allocs/frame=  693.52  bytes/frame=  18040.6  GCs=8  GC pause total=0.75ms
 pat-vsync frame 119 640x480 sha256=164ef6a8436af995fa76a5fa2bd42465141f6c479775b5b49f6666069c0e65e8
 pat-vsync graphics=Metal
-pat-vsync frames=1200  allocs=183  allocs/frame=    0.15  bytes/frame=    131.6  GCs=0  GC pause total=0.00ms
+pat-vsync frames=1200  allocs=145  allocs/frame=    0.12  bytes/frame=    127.9  GCs=0  GC pause total=0.00ms
 
 == Intel (amd64): must render the same frame hash
 off-amd64 frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 off-amd64 graphics=Metal
-off-amd64 frames=3000  allocs=1400574  allocs/frame=  466.86  bytes/frame=  12070.9  GCs=14  GC pause total=1.72ms
+off-amd64 frames=3000  allocs=1408704  allocs/frame=  469.57  bytes/frame=  12139.7  GCs=14  GC pause total=1.23ms
 pat-amd64 frame 299 640x480 sha256=f0b02153d3a7d1bc8d9ee4b1408af22b25e797244e8e1e9f4ebec7dff249931b
 pat-amd64 graphics=Metal
-pat-amd64 frames=3000  allocs=135  allocs/frame=    0.04  bytes/frame=      6.7  GCs=0  GC pause total=0.00ms
+pat-amd64 frames=3000  allocs=85  allocs/frame=    0.03  bytes/frame=      5.1  GCs=0  GC pause total=0.00ms
 off-amd64-vsync frame 119 640x480 sha256=164ef6a8436af995fa76a5fa2bd42465141f6c479775b5b49f6666069c0e65e8
 off-amd64-vsync graphics=Metal
-off-amd64-vsync frames=1200  allocs=820708  allocs/frame=  683.92  bytes/frame=  17840.3  GCs=8  GC pause total=0.84ms
+off-amd64-vsync frames=1200  allocs=822837  allocs/frame=  685.70  bytes/frame=  17889.3  GCs=8  GC pause total=1.38ms
 pat-amd64-vsync frame 119 640x480 sha256=164ef6a8436af995fa76a5fa2bd42465141f6c479775b5b49f6666069c0e65e8
 pat-amd64-vsync graphics=Metal
-pat-amd64-vsync frames=1200  allocs=111  allocs/frame=    0.09  bytes/frame=    125.0  GCs=0  GC pause total=0.00ms
+pat-amd64-vsync frames=1200  allocs=137  allocs/frame=    0.11  bytes/frame=    127.4  GCs=0  GC pause total=0.00ms
 
 == heap profiles (1000 frames, every allocation recorded)
 -- official: objects allocated under purego / objc / reflect
-Showing nodes accounting for 293243, 84.38% of 347527 total
+Showing nodes accounting for 292709, 84.37% of 346920 total
       flat  flat%   sum%        cum   cum%
-    193889 55.79% 55.79%     193889 55.79%  reflect.unsafe_New
-     69288 19.94% 75.73%     250684 72.13%  github.com/ebitengine/purego/objc.ID.Send (inline)
-     11352  3.27% 79.00%      58315 16.78%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.CommandBuffer.RenderCommandEncoderWithDescriptor
-      9144  2.63% 81.63%      37596 10.82%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.RenderCommandEncoder.SetFragmentTexture
-      5000  1.44% 83.06%      10000  2.88%  github.com/ebitengine/purego.RegisterFunc
+    193525 55.78% 55.78%     193525 55.78%  reflect.unsafe_New
+     69119 19.92% 75.71%     250116 72.10%  github.com/ebitengine/purego/objc.ID.Send (inline)
+     11351  3.27% 78.98%      58314 16.81%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.CommandBuffer.RenderCommandEncoderWithDescriptor
+      9137  2.63% 81.61%      37588 10.83%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.RenderCommandEncoder.SetFragmentTexture
+      5000  1.44% 83.05%      10000  2.88%  github.com/ebitengine/purego.RegisterFunc
       5000  1.44% 84.50%       5000  1.44%  reflect.MakeFunc
       4064  1.17% 85.67%       8128  2.34%  github.com/ebitengine/purego.placeStack
-      4064  1.17% 86.84%      15240  4.39%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.RenderCommandEncoder.SetScissorRect
+      4064  1.17% 86.84%      15248  4.40%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal/mtl.RenderCommandEncoder.SetScissorRect
 -- patched: objects allocated under purego / objc / reflect
-Showing nodes accounting for 9, 9.28% of 97 total
+Showing nodes accounting for 10, 9.43% of 106 total
       flat  flat%   sum%        cum   cum%
-        20 20.62% 20.62%         20 20.62%  sync.(*poolChain).pushHead
-        11 11.34% 31.96%         22 22.68%  github.com/hajimehoshi/ebiten/v2/internal/graphicscommand.(*commandQueue).EnqueueDrawTrianglesCommand
-        10 10.31% 42.27%         10 10.31%  sync.(*Pool).pinSlow
-         8  8.25% 50.52%          8  8.25%  github.com/hajimehoshi/ebiten/v2/internal/graphicscommand.init.func1
-         6  6.19% 56.70%          6  6.19%  github.com/ebitengine/purego.init.func1
-         5  5.15% 61.86%          7  7.22%  github.com/hajimehoshi/ebiten/v2/internal/gamepaddb.parseLine
-         4  4.12% 65.98%          4  4.12%  github.com/hajimehoshi/ebiten/v2/internal/thread.getCall[go.shape.struct { github.com/hajimehoshi/ebiten/v2/internal/thread.pool *sync.Pool; github.com/hajimehoshi/ebiten/v2/internal/thread.f func; github.com/hajimehoshi/ebiten/v2/internal/thread.arg go.shape.4f13bd428603643a44081451fa0d7ef9c0e819a20ea769b0d45feb7ed52e5731 }].func1
-         4  4.12% 70.10%          4  4.12%  runtime.mallocgc
+        28 26.42% 26.42%         28 26.42%  sync.(*poolChain).pushHead
+        11 10.38% 36.79%         11 10.38%  sync.(*Pool).pinSlow
+        10  9.43% 46.23%         22 20.75%  github.com/hajimehoshi/ebiten/v2/internal/graphicscommand.(*commandQueue).EnqueueDrawTrianglesCommand
+         8  7.55% 53.77%          8  7.55%  github.com/hajimehoshi/ebiten/v2/internal/graphicsdriver/metal.(*Graphics).ensureCommandBuffer
+         7  6.60% 60.38%          7  6.60%  github.com/hajimehoshi/ebiten/v2/internal/graphicscommand.init.func1
+         4  3.77% 64.15%          4  3.77%  github.com/ebitengine/purego.init.func1
+         4  3.77% 67.92%          4  3.77%  runtime.mallocgc
+         3  2.83% 70.75%          3  2.83%  github.com/hajimehoshi/ebiten/v2/internal/thread.getCall[go.shape.struct { github.com/hajimehoshi/ebiten/v2/internal/thread.pool *sync.Pool; github.com/hajimehoshi/ebiten/v2/internal/thread.f func; github.com/hajimehoshi/ebiten/v2/internal/thread.arg go.shape.4f13bd428603643a44081451fa0d7ef9c0e819a20ea769b0d45feb7ed52e5731 }].func1
 
 Inspect interactively: go tool pprof -http=: -sample_index=alloc_objects app/bin/official app/out/official.pprof

@@ -10,13 +10,27 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Apple Silicon
+          - name: macOS, Apple Silicon
             runner: macos-latest
-          - name: Intel
+            graphics: Metal
+          - name: macOS, Intel
             runner: macos-15-intel
+            graphics: Metal
+          - name: Linux
+            runner: ubuntu-latest
+            graphics: OpenGL
+          - name: Windows
+            runner: windows-latest
+            graphics: DirectX
     name: ${{ matrix.name }} (${{ matrix.runner }})
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      DISPLAY: ':99.0'
+      EXPECTED_GRAPHICS: ${{ matrix.graphics }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -27,11 +41,20 @@ jobs:
           go-version: '1.27.x'
           cache-dependency-path: app/*.sum
 
-      - name: Machine
+      - name: Machine (macOS)
+        if: runner.os == 'macOS'
         run: |
           sw_vers
           uname -m
           system_profiler SPHardwareDataType SPDisplaysDataType || true
+
+      - name: Install dependencies and start Xvfb (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          # The same setup as Ebitengine's own CI: Mesa's software OpenGL on a virtual X display.
+          sudo apt-get update
+          sudo apt-get install libgl1 libgl1-mesa-dri libx11-6 libxcursor1 libxext6 libxi6 libxinerama1 libxrandr2 libxrender1 xvfb
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
       - name: Run the proof
         run: ./run.sh
