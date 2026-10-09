@@ -2,7 +2,7 @@ module heapproof
 
 go 1.27.0
 
-require github.com/hajimehoshi/ebiten/v2 v2.11.0-alpha.0.20261008100745-9e6aa156c5f9
+require github.com/hajimehoshi/ebiten/v2 v2.11.0-alpha.0.20261009161825-5e18f5107e95
 
 require (
 	github.com/ebitengine/gomobile v0.0.0-20260820040257-d11f821a26a6 // indirect

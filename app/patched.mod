@@ -2,7 +2,7 @@ module heapproof
 
 go 1.27.0
 
-require github.com/hajimehoshi/ebiten/v2 v2.11.0-alpha.0.20261008100745-9e6aa156c5f9
+require github.com/hajimehoshi/ebiten/v2 v2.11.0-alpha.0.20261009161825-5e18f5107e95
 
 require (
 	github.com/ebitengine/gomobile v0.0.0-20260820040257-d11f821a26a6 // indirect
@@ -12,6 +12,6 @@ require (
 	golang.org/x/sys v0.48.0 // indirect
 )
 
-replace github.com/ebitengine/purego => github.com/gabstv/purego v0.12.0-alpha.1.0.20261008210505-bf824b7fa269
+replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261009182809-1a48e04d771a
 
-replace github.com/hajimehoshi/ebiten/v2 => github.com/gabstv/ebiten/v2 v2.0.0-20261008225932-d448a46a3666
+replace github.com/ebitengine/purego => github.com/gabstv/purego v0.12.0-alpha.1.0.20261009181927-c17791603b96

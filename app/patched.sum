@@ -2,10 +2,10 @@ github.com/ebitengine/gomobile v0.0.0-20260820040257-d11f821a26a6 h1:Tnc3Ytzxhgs
 github.com/ebitengine/gomobile v0.0.0-20260820040257-d11f821a26a6/go.mod h1:gwnFEwdzWZpNehgwkeK4756Ez58f58bXz6bgEAq+xqk=
 github.com/ebitengine/hideconsole v1.0.0 h1:5J4U0kXF+pv/DhiXt5/lTz0eO5ogJ1iXb8Yj1yReDqE=
 github.com/ebitengine/hideconsole v1.0.0/go.mod h1:hTTBTvVYWKBuxPr7peweneWdkUwEuHuB3C1R/ielR1A=
-github.com/gabstv/ebiten/v2 v2.0.0-20261008225932-d448a46a3666 h1:075B9lwEhzXU42yd/WyNVRnpC/QfEs4l4+0KaV65viE=
-github.com/gabstv/ebiten/v2 v2.0.0-20261008225932-d448a46a3666/go.mod h1:FNfM5pgFsJYkjEPJxxAROmVY4YXv3AenX+FsL+p99QU=
-github.com/gabstv/purego v0.12.0-alpha.1.0.20261008210505-bf824b7fa269 h1:pxHef3hVhcRACOrSCxqArFglW9fDiOGlpUojNs+XZ6g=
-github.com/gabstv/purego v0.12.0-alpha.1.0.20261008210505-bf824b7fa269/go.mod h1:DCHPP08djqhNSoTfImcnHYQRZmd0qhakvrozqaEYhGQ=
+github.com/gabstv/ebiten/v2 v2.0.0-20261009182809-1a48e04d771a h1:7u/8H+2PUoeC8qrXflDFud/+4oRQHUy7kzu74ODQMsE=
+github.com/gabstv/ebiten/v2 v2.0.0-20261009182809-1a48e04d771a/go.mod h1:kEr+RmUCTePeHJtd4APuIS8yP9MA+OCAwStk0hN7JcQ=
+github.com/gabstv/purego v0.12.0-alpha.1.0.20261009181927-c17791603b96 h1:jsbOQ8hIryVSl44oKfog9Q14adXkfIbakD7BA8u4Xf0=
+github.com/gabstv/purego v0.12.0-alpha.1.0.20261009181927-c17791603b96/go.mod h1:DCHPP08djqhNSoTfImcnHYQRZmd0qhakvrozqaEYhGQ=
 golang.org/x/image v0.46.0 h1:b1+oYj0Jbp6K5MDT4i4/eZpYlk3V8SJhhDKh6LBHAyQ=
 golang.org/x/image v0.46.0/go.mod h1:3B3W05VGVQyuXucLINLjXKrqISASfi4Xj+iCVkLMwew=
 golang.org/x/mod v0.41.0 h1:qJmnOUb4YB+FsEuM3HcWucdZASCPGhsX6uljO6pog0c=

@@ -15,7 +15,7 @@ It builds the same small app twice:
 
 | build      | module file       | Ebitengine                            | purego                               |
 |------------|-------------------|---------------------------------------|--------------------------------------|
-| `official` | `app/go.mod`      | upstream `main` at `9e6aa156c`        | v0.11.1                              |
+| `official` | `app/go.mod`      | upstream `main` at `5e18f5107`        | v0.11.1                              |
 | `patched`  | `app/patched.mod` | same commit + changes ([branch][eb])  | `main` + changes ([branch][pg])      |
 
 The app code is the same for both. Only the dependencies differ.
